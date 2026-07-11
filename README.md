@@ -1,36 +1,74 @@
-# LeakHunter OSINT UI (Neo-Brutalism) 🕵️‍♂️
+<div align="center">
+  
+# 🕵️‍♂️ LeakHunter OSINT UI
 
-Neo-Brutalist Dashboard для OSINT аналітики. Фокус проекту: мінімалізм, високий контраст (accessibility), миттєве завантаження, компонентна архітектура для масованого аналізу витоків даних (Leaks).
+**High-Performance Neo-Brutalist Dashboard for OSINT Investigations**
 
-![Архітектура та Зв'язки коду (Graphify)](graphify-out/graph.svg)
+[![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.1-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](#)
+
+*Швидкий, мінімалістичний та готовий до масованого аналізу витоків даних (Data Leaks) фронтенд компонент.*
+
+</div>
+
+---
 
 ## 📌 Огляд Проєкту
-Цей репозиторій містить **високопродуктивний Frontend UI**, який розділений на такі модулі:
-- **Дашборд:** Лайв-сповіщення та статистика.
-- **GeoExtract:** Карта зі злиття координат із розширеним таймлайном подій.
-- **Конвертер:** UX для мапінгу та очищення парсованих дампів.
 
-## 🏗 Архітектура та Деплоймент
-Ми підготували цей проєкт до повноцінного переходу на бойовий **Microservices Stack**.
-Ознайомтеся з деталями:
-- 📖 [ARCHITECTURE.md](ARCHITECTURE.md) — Детальна C4 контейнерна діаграма повного стеку (React + Supabase + FastAPI + Typesense).
-- 🚀 [DEPLOYMENT.md](DEPLOYMENT.md) — Покрокова інструкція з локального налаштування Docker-середовища та розгортання в Production (Cloud Options).
+Цей репозиторій містить **високопродуктивний Frontend UI**, який розділений на потужні незалежні модулі:
+
+*   📊 **Дашборд:** Моніторинг активних баз, лайв-сповіщення та статистика.
+*   🌍 **GeoExtract:** Карта для злиття координат із розширеним таймлайном подій та фільтрацією "свіжих/старих" слідів.
+*   🔄 **Конвертер & Дедуплікатор:** Інтерфейс для мапінгу та створення структурованих JSON зі сирих SQL/TXT дампів.
+
+## 🏗 Архітектура (High-Level)
+
+Проєкт підготовлений до переходу на повноцінний **Microservices Stack**. Нижче наведена схема архітектури (Mermaid):
+
+```mermaid
+graph TD
+    UI[🖥 React/Vite UI] -->|REST / PostgREST| Auth[(🗄 Supabase Auth & Core DB)]
+    UI -->|Millisecond Search| Search[⚡ Typesense Engine]
+    UI -->|Task Trigger| API[🐍 Python FastAPI Worker]
+    API -->|Raw Downloads| Store[☁️ Cloudflare R2]
+    API -->|Background Parse| Celery[⚙️ Celery / Redis Queue]
+    Celery -->|Store Cleaned Metadata| Auth
+    Celery -->|Index Data| Search
+```
+
+### Додаткова документація:
+- 📖 [**ARCHITECTURE.md**](./ARCHITECTURE.md) — Детальна C4 контейнерна діаграма повного стеку.
+- 🚀 [**DEPLOYMENT.md**](./DEPLOYMENT.md) — Покрокова інструкція з локального налаштування Docker-середовища та розгортання в Production.
 
 ## 💻 Tech Stack (UI Foundation)
-- **Framework:** React 19 + TypeScript + Vite
-- **Styling:** Neo-Brutalism (Custom CSS Variables)
-- **Icons:** Lucide-React
-- **Architecture Readiness:** Lazy loading, Chunk splitting, Component modularity.
+
+*   **Core:** React 19 + TypeScript + Vite
+*   **Styling:** Neo-Brutalism Design System (Custom CSS Variables, High Contrast)
+*   **Icons:** Lucide-React
+*   **Performance:** Lazy loading (`React.lazy`), Chunk splitting, Component modularity.
 
 ## 🛠 Запуск в Dev-режимі
 
+Запустіть платформу локально всього у три кроки:
+
 ```bash
-# Встановлення залежностей (рекомендовано pnpm, але сумісно і з npm)
+# 1. Клонування репозиторію
+git clone https://github.com/wakkawarpman-oss/leakhunter-osint-ui.git
+cd leakhunter-osint-ui
+
+# 2. Встановлення залежностей 
 npm install
 
-# Запуск дев-сервера з HMR
+# 3. Запуск дев-сервера з HMR
 npm run dev
 
-# Збірка під Production
+# Для збірки під Production виконайте:
 npm run build
 ```
+
+---
+<div align="center">
+  <i>Розроблено для OSINT-аналітиків, які цінують швидкість та читабельність даних.</i>
+</div>
