@@ -7,12 +7,14 @@ export interface GeoDocument {
   status: 'Оброблено' | 'В процесі' | 'Помилка';
 }
 
+export type PointType = 'fresh' | 'medium' | 'old_heatmap';
+
 export interface GeoPoint {
   id: string;
   lat: number;
   lng: number;
   sourceDocId: string;
-  type: string;
+  type: PointType;
   description: string;
   timestamp: string;
   isFresh: boolean;

@@ -1009,12 +1009,21 @@
   z-index: 20;
 }
 .geo-marker.fresh {
-  background: #ef4444;
+  background: #ef4444; /* Червона */
   box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.2);
 }
-.geo-marker.old {
-  background: #3b82f6;
-  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+.geo-marker.medium {
+  background: #eab308; /* Жовта */
+  box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.2);
+}
+.geo-marker.old_heatmap {
+  background: radial-gradient(circle, rgba(249,115,22,1) 0%, rgba(249,115,22,0.4) 50%, transparent 100%);
+  border: none;
+  width: 40px;
+  height: 40px;
+  transform: translate(-12px, -12px); /* компенсуємо розмір для центрування */
+  filter: blur(2px);
+  mix-blend-mode: screen;
 }
 
 /* Timeline/Footer */

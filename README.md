@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# LeakHunter OSINT UI (Neo-Brutalism) 🕵️‍♂️
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Neo-Brutalist Dashboard для OSINT аналітики. Фокус проекту: мінімалізм, високий контраст (accessibility), миттєве завантаження, компонентна архітектура для масованого аналізу витоків даних (Leaks).
 
-Currently, two official plugins are available:
+![Архітектура та Зв'язки коду (Graphify)](graphify-out/graph.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Огляд Проєкту
+Цей репозиторій містить **високопродуктивний Frontend UI**, який розділений на такі модулі:
+- **Дашборд:** Лайв-сповіщення та статистика.
+- **GeoExtract:** Карта зі злиття координат із розширеним таймлайном подій.
+- **Конвертер:** UX для мапінгу та очищення парсованих дампів.
 
-## React Compiler
+## 🏗 Архітектура та Деплоймент
+Ми підготували цей проєкт до повноцінного переходу на бойовий **Microservices Stack**.
+Ознайомтеся з деталями:
+- 📖 [ARCHITECTURE.md](ARCHITECTURE.md) — Детальна C4 контейнерна діаграма повного стеку (React + Supabase + FastAPI + Typesense).
+- 🚀 [DEPLOYMENT.md](DEPLOYMENT.md) — Покрокова інструкція з локального налаштування Docker-середовища та розгортання в Production (Cloud Options).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Tech Stack (UI Foundation)
+- **Framework:** React 19 + TypeScript + Vite
+- **Styling:** Neo-Brutalism (Custom CSS Variables)
+- **Icons:** Lucide-React
+- **Architecture Readiness:** Lazy loading, Chunk splitting, Component modularity.
 
-## Expanding the Oxlint configuration
+## 🛠 Запуск в Dev-режимі
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+```bash
+# Встановлення залежностей (рекомендовано pnpm, але сумісно і з npm)
+npm install
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+# Запуск дев-сервера з HMR
+npm run dev
+
+# Збірка під Production
+npm run build
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
