@@ -971,8 +971,12 @@
 /* Map Area (Mock) */
 .geo-map-container {
   position: relative;
-  background: url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/4/5/9') #1a1b1e;
-  background-size: cover;
+  background-color: #1a241b; /* Темнооливковий колір, що імітує карту/радар */
+  background-image: 
+    linear-gradient(#2a342b 1px, transparent 1px),
+    linear-gradient(90deg, #2a342b 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
   display: flex;
   flex-direction: column;
 }
