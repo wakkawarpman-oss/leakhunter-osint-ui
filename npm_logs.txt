@@ -1,0 +1,18 @@
+npm verbose cli /opt/homebrew/Cellar/node/26.4.0/bin/node /opt/homebrew/bin/npm
+npm info using npm@11.17.0
+npm info using node@v26.4.0
+npm verbose title npm i
+npm verbose argv "i" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/Users/gonzo/.npm/_logs/2026-07-11T21_43_24_949Z-
+npm verbose logfile /Users/gonzo/.npm/_logs/2026-07-11T21_43_24_949Z-debug-0.log
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 346ms
+
+up to date, audited 5 packages in 863ms
+
+found 0 vulnerabilities
+npm verbose cwd /Users/gonzo/output/leakhunter-ui/app
+npm verbose os Darwin 25.5.0
+npm verbose node v26.4.0
+npm verbose npm  v11.17.0
+npm verbose exit 0
+npm info ok
